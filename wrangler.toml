@@ -1,6 +1,6 @@
 name = "plausible-mcp"
 # Sentry Internal. Pinned so a deploy can't land in another account by accident.
-account_id = "20d94f53c7cab0b469521b703ff1923c"
+account_id = "c94119756a244a625c9c751a13cb1c76"
 main = "src/worker.ts"
 compatibility_date = "2025-01-01"
 # nodejs_compat_v2: Node built-ins for the SDK. global_fetch_strictly_public: hardens
@@ -8,27 +8,27 @@ compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat_v2", "global_fetch_strictly_public"]
 
 routes = [
-  { pattern = "plausible-mcp.sentry.dev", custom_domain = true }
+  { pattern = "plausible-mcp.cloudflare-carl.workers.dev", custom_domain = true }
 ]
 
 [vars]
 # Email domain(s) allowed to sign in to /internal (comma-separated, "@" optional).
 # Enforced in code in ADDITION to the upstream Access policy. Self-hosting? Set your own.
-ALLOWED_EMAIL_DOMAIN = "sentry.io"
+ALLOWED_EMAIL_DOMAIN = "rocketgenius.com"
 # Access service-token client IDs allowed on /internal without a user identity
 # (comma-separated). Not secrets — identifiers; the matching Access policy still
 # requires the token's secret. Currently: the "junior-plausible-mcp" token.
-ALLOWED_SERVICE_TOKEN_IDS = "f2fb6d108dd50696e67d022c4eaa2c5f.access"
+ALLOWED_SERVICE_TOKEN_IDS = ""
 # Hostnames accepted by the MCP endpoints (port-agnostic). Keep localhost for wrangler dev.
-MCP_ALLOWED_HOSTNAMES = "plausible-mcp.sentry.dev,localhost,127.0.0.1"
+MCP_ALLOWED_HOSTNAMES = "plausible-mcp.cloudflare-carl.workers.dev,localhost,127.0.0.1"
 # Browser origins allowed to call /internal. Non-browser clients send no Origin header.
-MCP_ALLOWED_ORIGIN_HOSTNAMES = "claude.ai,localhost,127.0.0.1"
+MCP_ALLOWED_ORIGIN_HOSTNAMES = "chatgpt.com,claude.ai,localhost,127.0.0.1"
 # Cloudflare Access team domain — verifies the Cf-Access-Jwt-Assertion JWKS + issuer.
 # Not a secret (public JWKS URL); must match the team the Access app lives in. No slash.
-CF_ACCESS_TEAM_DOMAIN = "https://sentry-internal.cloudflareaccess.com"
+CF_ACCESS_TEAM_DOMAIN = "https://summer-term-5693.cloudflareaccess.com"
 # The Access application's Application Audience (AUD) tag — checked against the token
 # `aud`. Not a secret (an app identifier, not a credential).
-CF_ACCESS_AUD = "163ce3b13ebe967295ffdf932b5699a2202de3a650684c87f61d5076eb6735c4"
+CF_ACCESS_AUD = "e43344eb235fd63c3c5d101aaf562d6a3d8e8c591d9cd4dfe7f7fe938de98f7d"
 
 [dev]
 port = 8787
