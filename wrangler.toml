@@ -14,7 +14,7 @@ routes = [
 [vars]
 # Email domain(s) allowed to sign in to /internal (comma-separated, "@" optional).
 # Enforced in code in ADDITION to the upstream Access policy. Self-hosting? Set your own.
-ALLOWED_EMAIL_DOMAIN = "rocketgenius.com"
+ALLOWED_EMAIL_DOMAIN = "fastmail.com"
 # Access service-token client IDs allowed on /internal without a user identity
 # (comma-separated). Not secrets — identifiers; the matching Access policy still
 # requires the token's secret. Currently: the "junior-plausible-mcp" token.
